@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item android:id="@+id/tkthang"
+    android:title="Thống kê doanh thu"
+    app:showAsAction="collapseActionView"/>
+    <item android:title="Thống kê mặt hàng"
+        android:id="@+id/tkbanchay"/>
+</menu>

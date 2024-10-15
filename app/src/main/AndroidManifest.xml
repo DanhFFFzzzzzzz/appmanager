@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <application
+
+        android:allowBackup="true"
+
+        android:dataExtractionRules="@xml/data_extraction_rules"
+
+        android:fullBackupContent="@xml/backup_rules"
+
+        android:hardwareAccelerated="true"
+
+        android:icon="@mipmap/ic_launcher"
+
+        android:label="AppBanHang"
+
+        android:roundIcon="@mipmap/ic_launcher_round"
+
+        android:supportsRtl="true"
+
+        android:theme="@style/Theme.AppBanHang"
+
+        android:usesCleartextTraffic="true"
+
+        tools:targetApi="31">
+        <activity
+
+            android:name="com.example.manager.appbanhang.Activity.ThongKeActivity"
+
+            android:exported="true" />
+        <activity
+
+            android:name="com.example.manager.appbanhang.Activity.ThemSPActivity"
+
+            android:exported="true" />
+        <activity
+
+            android:name="com.example.manager.appbanhang.Activity.QuanliActivity"
+
+            android:exported="true" />
+        <activity
+
+            android:name="com.example.manager.appbanhang.Activity.SplashActivity"
+
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+
+            android:name="com.example.manager.appbanhang.Activity.SearchActivity"
+
+            android:exported="true" />
+        <activity
+
+            android:name="com.example.manager.appbanhang.Activity.XemDonActivity"
+
+            android:exported="true" />
+        <activity
+
+            android:name="com.example.manager.appbanhang.Activity.ThanhToanActivity"
+
+            android:exported="true" />
+        <activity
+
+            android:name="com.example.manager.appbanhang.Activity.DangNhapActivity"
+
+            android:exported="true" />
+        <activity
+
+            android:name="com.example.manager.appbanhang.Activity.ResetPassActivity"
+
+            android:exported="true" />
+        <activity
+
+            android:name="com.example.manager.appbanhang.Activity.MainActivity"
+
+            android:exported="true">
+            <!-- Thêm đoạn code deep link ở đây -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="demozpdk" android:host="app" />
+            </intent-filter>
+        </activity>
+        <activity
+
+            android:name="com.example.manager.appbanhang.Activity.DangKyActivity"
+
+            android:exported="true" />
+        <activity
+
+            android:name="com.example.manager.appbanhang.Activity.GioHangActivity"
+
+            android:exported="true" />
+        <activity
+
+            android:name="com.example.manager.appbanhang.Activity.ChiTietActivity"
+
+            android:exported="true" />
+        <activity
+
+            android:name="com.example.manager.appbanhang.Activity.DepActivity"
+
+            android:exported="true" />
+        <activity
+
+            android:name="com.example.manager.appbanhang.Activity.GiayActivity"
+
+            android:exported="true" />
+        <service
+
+            android:name="com.example.manager.appbanhang.Service.FirebaseMessageReceiver"
+
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>
+
