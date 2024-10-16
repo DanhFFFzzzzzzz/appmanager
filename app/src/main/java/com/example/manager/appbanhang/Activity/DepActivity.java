@@ -32,7 +32,7 @@ public class DepActivity extends AppCompatActivity {
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     int page =1;
     int loai;
-    GiayAdapter adapterGiay;
+    GiayAdapter adapterGiay; //adapterGiay để liên kết dữ liệu với RecyclerView
     List<MauSanPham> mauSanPhamList;
     LinearLayoutManager linearLayoutManager;
     Handler handler = new Handler();
@@ -52,7 +52,7 @@ public class DepActivity extends AppCompatActivity {
         addEventLoad();
     }
 
-    private void addEventLoad() {
+    private void addEventLoad() { //Thêm sự kiện cho RecyclerView để phát hiện khi người dùng cuộn đến cuối danh sách.
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -72,7 +72,7 @@ public class DepActivity extends AppCompatActivity {
         });
     }
 
-    private void loadMore() {
+    private void loadMore() { //Tải thêm dữ liệu khi cuộn đến cuối danh sách và thêm một item "loading" vào danh sách.
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -96,7 +96,7 @@ public class DepActivity extends AppCompatActivity {
         },2000);
     }
 
-    private void getData(int page) {
+    private void getData(int page) { //Gọi API để lấy danh sách sản phẩm theo trang và loại sản phẩm.
         compositeDisposable.add(apiBanHang.getSanPham(page,loai)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -141,7 +141,7 @@ public class DepActivity extends AppCompatActivity {
         });
     }
 
-    private void AnhXa() {
+    private void AnhXa() { // Liên kết các thành phần giao diện với biến trong lớp.
         toolbar = findViewById(R.id.toobar);
         recyclerView = findViewById(R.id.recycleview_giay);
         linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);

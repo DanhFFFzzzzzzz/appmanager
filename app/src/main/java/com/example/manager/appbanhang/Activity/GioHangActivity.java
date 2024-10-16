@@ -36,7 +36,7 @@ public class GioHangActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gio_hang);
         initView();
         initControl();
-
+        //Nếu Utils.mangmuahang không null, nó sẽ được xóa để đảm bảo dữ liệu mới.
         if (Utils.mangmuahang !=null){
             Utils.mangmuahang.clear();
         }
@@ -44,18 +44,19 @@ public class GioHangActivity extends AppCompatActivity {
 
     }
 
-    private void tinhTongTien() {
+    private void tinhTongTien() { //Duyệt qua từng sản phẩm trong giỏ hàng, tính tổng tiền và định dạng nó để hiển thị.
         tongtiensp = 0;
         for (int i = 0; i< Utils.mangmuahang.size(); i++){
             tongtiensp = tongtiensp+ (Utils.mangmuahang.get(i).getGiasp()* Utils.mangmuahang.get(i).getSoluong());
 
         }
+        // sử dụng để định dạng số thành chuỗi theo một mẫu nhất định
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
 
         tongtien.setText(decimalFormat.format(tongtiensp));
     }
 
-    private void initControl() {
+    private void initControl() { // Nếu giỏ hàng trống, hiển thị thông báo; nếu không, thiết lập adapter cho RecyclerView. Khi nhấn nút mua hàng, chuyển sang activity thanh toán và truyền tổng số tiền.
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -98,6 +99,7 @@ public class GioHangActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        //Đăng ký và hủy đăng ký sự kiện để lắng nghe các thay đổi trong giỏ hàng.
         EventBus.getDefault().register(this);
     }
 

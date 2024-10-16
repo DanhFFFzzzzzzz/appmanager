@@ -74,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
+        //Khởi tạo thư viện Paper để lưu trữ dữ liệu cục bộ.
         Paper.init(this);
+        //Kiểm tra xem người dùng đã được lưu hay chưa và lấy dữ liệu. Hãy chắc chắn xử lý các trường hợp dữ liệu người dùng có thể không đầy đủ hoặc null.
         if (Paper.book().read("user") != null) {
             User user = Paper.book().read("user");
             Utils.user_current = user;
@@ -166,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        mauSanPhamModel -> {
+                        mauSanPhamModel -> { // xử lý khi gọi API thành công
                             if (mauSanPhamModel.isSuccess()){
                                 mangMauSp = mauSanPhamModel.getResult();
                                 spAdapter = new MauSanPhamAdapter(getApplicationContext(), mangMauSp);
@@ -292,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
         badge.setText(String.valueOf(totalItem));
     }
 
-    public boolean isConnected(Context context) {
+    public boolean isConnected(Context context) { //kiểm tra kết nối Internet
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager != null) {
             Network network = null;

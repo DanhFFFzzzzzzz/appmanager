@@ -87,7 +87,7 @@ public class ChiTietActivity extends AppCompatActivity {
         updateBadgeCount();
     }
 
-    private void updateBadgeCount() {
+    private void updateBadgeCount() { //Tính tổng số sản phẩm trong giỏ hàng và cập nhật badge.
         int totalItem = 0;
         // Kiểm tra Utils.manggiohang có null hay không
         if (Utils.manggiohang != null) {
@@ -125,7 +125,7 @@ public class ChiTietActivity extends AppCompatActivity {
         imghinhanh = findViewById(R.id.imgchitiet);
         toolbar = findViewById(R.id.toobar);
         badge = findViewById(R.id.menu_sl);
-        FrameLayout frameLayoutgiohang = findViewById(R.id.framegiohang);
+        FrameLayout frameLayoutgiohang = findViewById(R.id.framegiohang);//Khởi tạo FrameLayout cho giỏ hàng và thiết lập sự kiện click để điều hướng đến GioHangActivity.
         frameLayoutgiohang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,7 +138,7 @@ public class ChiTietActivity extends AppCompatActivity {
     }
 
 
-    private void ActionToolBar() {
+    private void ActionToolBar() {//Thiết lập thanh công cụ và sự kiện khi nhấn nút quay lại.
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

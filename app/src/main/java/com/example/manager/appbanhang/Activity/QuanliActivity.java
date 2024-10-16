@@ -151,6 +151,7 @@ public class QuanliActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        //Đăng ký và hủy đăng ký sự kiện để lắng nghe các thay đổi trong giỏ hàng.
         EventBus.getDefault().register(this);
     }
     @Subscribe(sticky = true, threadMode =  ThreadMode.MAIN)
