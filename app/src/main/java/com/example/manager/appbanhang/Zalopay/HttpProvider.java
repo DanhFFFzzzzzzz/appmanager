@@ -18,7 +18,7 @@ import okhttp3.Response;
 import okhttp3.TlsVersion;
 
 public class HttpProvider {
-     public static JSONObject sendPost(String URL, RequestBody formBody) {
+     public static JSONObject sendPost(String URL, RequestBody formBody){//nhận vào một URL và một RequestBody để gửi yêu cầu.
         JSONObject data = new JSONObject();
         try {
             ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)

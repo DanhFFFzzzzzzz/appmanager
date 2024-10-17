@@ -60,7 +60,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         initControl();
     }
 
-    private void countItem() {
+    private void countItem() { //Tính tổng số sản phẩm trong giỏ hàng (mangmuahang).
         totalItem = 0;
         for (GioHang item : Utils.mangmuahang) {
             totalItem += item.getSoluong();
@@ -97,7 +97,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         });
     }
 
-    // Phương thức createBaseOrder để tái sử dụng logic đặt hàng
+    //Phương thức này thực hiện gọi API để tạo đơn hàng.
     private void createBaseOrder(Runnable successAction, Runnable errorAction) {
         String str_email = Utils.user_current.getEmail();
         String str_sdt = Utils.user_current.getSodienthoai();
@@ -119,7 +119,7 @@ public class ThanhToanActivity extends AppCompatActivity {
                 ));
     }
 
-    // Phương thức createOrder gọi createBaseOrder và xử lý logic chuyển hướng
+    // createOrder: Gọi createBaseOrder và xử lý chuyển hướng đến màn hình chính nếu đặt hàng thành công.
     private void createOrder() {
         createBaseOrder(
                 () -> {
@@ -133,7 +133,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         );
     }
 
-    // Phương thức createZaloPayOrder gọi createBaseOrder và xử lý logic ZaloPay
+    // sau khi đặt hàng thành công, nó tiếp tục tạo đơn hàng cho ZaloPay.
     private void createZaloPayOrder() {
         createBaseOrder(
                 () -> {
@@ -158,7 +158,7 @@ public class ThanhToanActivity extends AppCompatActivity {
                 }
         );
     }
-
+    //Thực hiện thanh toán thông qua ZaloPay
     private void payOrder(String token) {
         ZaloPaySDK.getInstance().payOrder(this, token, "demozpdk://app", new PayOrderListener() {
             @Override
@@ -195,7 +195,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         });
     }
 
-
+    //Xóa giỏ hàng (mangmuahang) sau khi đặt hàng thành công.
     private void clearCart() {
         for (GioHang gioHang : Utils.mangmuahang) {
             if (Utils.manggiohang.contains(gioHang)) {

@@ -54,7 +54,7 @@ public class ThongKeActivity extends AppCompatActivity {
         getdataChart();
         settingBarchart();
     }
-
+    //Thiết lập các thuộc tính cho biểu đồ cột như ẩn mô tả và thiết lập giới hạn cho trục X và Y.
     private void settingBarchart() {
         barChart.getDescription().setEnabled(false);
         barChart.setDrawValueAboveBar(false);
@@ -66,7 +66,7 @@ public class ThongKeActivity extends AppCompatActivity {
         YAxis yAxisLeft = barChart.getAxisLeft();
         yAxisLeft.setAxisMinimum(0);
     }
-
+    //Tạo menu cho Activity, cho phép người dùng chọn giữa các thống kê.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -94,7 +94,7 @@ public class ThongKeActivity extends AppCompatActivity {
         getdataChart(); // Lấy dữ liệu để vẽ PieChart
     }
 
-
+    //Lấy dữ liệu thống kê theo tháng từ API và cập nhật biểu đồ cột.
     private void getTkThang() {
         barChart.setVisibility(View.VISIBLE);
         pieChart.setVisibility(View.GONE);

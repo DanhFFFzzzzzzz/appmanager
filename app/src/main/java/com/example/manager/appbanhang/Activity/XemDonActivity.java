@@ -54,7 +54,7 @@ public class XemDonActivity extends AppCompatActivity {
     }
 
     private void getOrder() {
-        compositeDisposable.add(apiBanHang.xemDonHang(0)
+        compositeDisposable.add(apiBanHang.xemDonHang(0) //gọi toàn bộ don hang
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
